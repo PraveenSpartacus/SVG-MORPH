@@ -275,6 +275,7 @@
 
 
         function openFullscreen(){
+            console.log('open exeuted')
             var elem = document.body;
             if (elem.requestFullscreen) {
                 elem.requestFullscreen();
@@ -288,6 +289,7 @@
         }
 
         function closeFullscreen() {
+            console.log('close exeuted')
             if (document.exitFullscreen) {
                 document.exitFullscreen();
             } else if (document.mozCancelFullScreen) { /* Firefox */
@@ -299,13 +301,13 @@
             }
         }
 
-        var Fscreen = false;
+        // var Fscreen = false;
         function full(){
-            if(Fscreen)
+            if(document.fullscreenElement)
                 closeFullscreen();
             else    
                 openFullscreen();
-            Fscreen = !Fscreen;
+            // Fscreen = !Fscreen;
         }
 
         var mylatesttap;
@@ -330,6 +332,11 @@
         }
 
         document.body.addEventListener("click",doubletap)
+
+        document.onkeyup = (event) =>{
+            if(event.key === 'Escape' && document.fullscreenElement)
+            closeFullscreen();
+        };
 
 </script>
 </html>
