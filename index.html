@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">    
+    <title>SVG MORPH</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .unselectable {
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    body{
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+        width: calc(100vw - calc(100vw - 100%));
+    }
+    
+    .page{
+        position: relative;
+        overflow: hidden;
+        width: calc(100vw - calc(100vw - 100%));
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        background-image: radial-gradient(circle, rgb(31, 31, 31),rgb(14, 14, 14));
+        background-repeat: no-repeat;
+    }
+    .svgContainer{
+        background-color: rgba(240, 248, 255, 0);
+        position: relative;
+        height: 50vh;
+        width: calc(100vw - calc(100vw - 100%));
+    }
+    .svgContainer svg#main{
+        /* background-color: aqua; */
+        height: 80%;
+        width: 100%;
+        position: absolute;
+        top: 20%;
+        filter: drop-shadow(0px 0px 15px rgba(0, 0, 0)) ;
+        fill: rgb(15, 15, 15);
+        stroke: rgba(255, 255, 255, 0.445);
+    }
+    .buttonContainer{
+        width: 100%;
+        height: 50vh;
+        /* background-color: rgb(0, 0, 0); */
+        position: relative;
+    }
+    .buttons{
+        position: absolute;
+        top: 50%;
+        transform: translate(0,-50%);
+        height: fit-content;
+        width: 100%;
+        
+        display: flex;
+        justify-content: center;
+        /* background-color: rgb(173, 226, 226); */
+        flex-wrap: wrap;
+    }
+    .buttons button{
+        height: fit-content;
+        /* padding: 10px 20px; */
+        /* margin: 1vh 0;
+        margin-left: 2vw; */
+        margin: 1vh 1vw;
+        width: 120px;
+        height: 40px;
+        cursor: pointer;
+        background-color: rgb(27, 27, 27);
+        border: none;
+        outline: none;
+        border: rgba(255, 255, 255, 0.356) 2px solid;
+        color: rgb(146, 146, 146);
+    }
+    .buttons button:focus{
+        border: rgba(255, 255, 255, 0.74) 2px solid;
+        color: whitesmoke;
+    }
+    .buttons button p{
+        font-weight: 600;
+        
+    }
+
+
+    .up{
+    /* transform: scale(0.3);
+    transform-origin: top left; */
+    height: calc(246px/6);
+    width: calc(222px/6);
+    /* background-color: green; */
+    animation: flyer 14s linear infinite forwards;
+    position: absolute;
+    left: -40px;
+    pointer-events: none;
+}
+@keyframes flyer{
+    0%{
+        left: -40px;
+    }
+    100%{
+        left: 100%;
+    }
+}
+.svg{
+    width: 100%;
+    height: 100%;
+    fill: rgb(163, 163, 163);
+    /* filter: drop-shadow(0 0 0.7px white); */
+}
+
+.test{
+    animation: fly 0.6s ease infinite alternate;
+}
+
+
+@keyframes fly{
+    0%{
+        d: path("M 80.4968 124 L 93.9968 118 L 93.9968 130 L 143.497 122 L 143.497 109 L 149.997 100.5 L 143.497 17.5 L 133.997 0C112.611 4.14641 100.938 8.18921 84.9968 42.5C84.7388 50.5471 84.3089 55.6306 82.4968 66.5C73.3868 97.3283 74.6303 108.224 80.4968 124Z");
+    }
+    100%{
+        d: path("M 112.721 143 L 126.199 149 L 126.199 137 L 175.619 145 L 177.609 154.5 L 182.109 166.5 L 217.109 223 L 219.608 243.997C219.503 243.55 200.69 255.799 149.109 215.5C148.851 207.453 128.009 192.37 126.2 181.5C117.105 150.672 106.864 158.777 112.721 143Z");
+    }
+}
+
+.msg{
+    position: fixed;
+    top: 0;
+    color: rgb(185, 185, 185);
+    font-size: 13px;
+    background-color: rgb(46, 46, 46);
+    padding: 5px 10px;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: fit-content;
+    border-radius: 15px;
+    animation: msg 10s ease forwards;
+}
+
+@keyframes msg{
+    0%{
+        opacity: 0;
+        top: -30px;
+    }
+    10%{
+        opacity: 1;
+        top: 20px;
+    }
+    90%{
+        opacity: 1;
+        top: 20px;
+    }
+    100%{
+        opacity: 0;
+        top: -30px; 
+    }
+}
+
+
+@media only screen and (max-width: 600px){
+    .up{
+        height: calc(246px/9);
+        width: calc(222px/9);
+    }
+}
+
+@media only screen and (max-width: 900px){
+    .up{
+        height: calc(246px/7);
+        width: calc(222px/7);
+    }
+}
+@media only screen and (max-width: 250px){
+    .buttons button{
+        width: 45%;
+    }
+}
+
+#ele{
+    transition: d 0.5s linear;
+}
+
+</style>
+
+<body>
+    <!-- <img src="cool.svg" alt=""> -->
+<div class="page">
+<div class="svgContainer">
+<svg id="main" width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg"> 
+    <style>
+        #ele{
+            transition: d 0.5s linear;
+        }
+    </style>
+    <!-- <rect width="300" height="300" fill="#0601FF00"/> -->
+    <path id="ele" class="test1"  d="M 150 300 L 0 300 L 0 300 L 150 0 L 150 0 L 150 0 L 300 300 L 300 300 L 150 300Z"/>
+    
+    </svg>
+</div>
+    
+<div class="buttonContainer">
+    <div class="buttons">
+        
+        <button class="unselectable" onclick="point()"><p>POINT</p></button>
+        <button class="unselectable" onclick="line()"><p>LINE</p></button>
+        <button class="unselectable" onclick="triangle()"><p>TRIANGLE</p></button>
+        <button class="unselectable" onclick="rectangle()"><p>RECTANGLE</p></button>
+        <button class="unselectable" onclick="square()"><p>SQUARE</p></button>
+        <button class="unselectable" onclick="pentagon()"><p>PENTAGON</p></button>
+        <button class="unselectable" onclick="hexagon()"><p>HEXAGON</p></button>
+        <button class="unselectable" onclick="septagon()"><p>SEPTAGON</p></button>
+        <button class="unselectable" onclick="octagon()"><p>OCTAGON</p></button>
+        <button class="unselectable" onclick="full()"><p>Full Screen</p></button>
+        
+    </div>
+</div>
+    
+
+
+
+<div class="msg unselectable">
+    double-tap to enter App-mode
+</div>
+
+</div>
+
+</body>
+<script>
+        let y = document.getElementById("ele");
+        console.log(y);
+
+        function point(){
+            //console.log(y.getAttribute("d"));
+            y.setAttribute("d","M 150 150 L 150 150 L 150 150 L 150 150 L 152 150 L 150 150 L 150 150 L 150 150 L 150 150Z");
+        }
+        function line(){
+            //console.log(y.getAttribute("d"));
+            y.setAttribute("d","M 150 150 L 0 150 L 0 150 L 150 150 L 150 150 L 150 150 L 150 150 L 300 150 L 150 150Z");
+        }
+        function triangle(){
+            y.setAttribute("d","M 150 300 L 0 300 L 0 300 L 150 0 L 150 0 L 150 0 L 300 300 L 300 300 L 150 300Z");
+        }
+        function square(){
+            y.setAttribute("d","M 150 300 L 0 300 L 0 200 L 0 100 L 0 0 L 300 0 L 300 100 L 300 300 L 150 300Z");
+        }
+        function rectangle(){
+            y.setAttribute("d","M 150 200 L 150 200 L 0 200 L 0 100 L 0 0 L 300 0 L 300 100 L 300 200 L 150 200Z");
+        }
+        function pentagon(){
+            y.setAttribute("d","M 150 200 L 150 200 L 0 200 L 0 100 L 150 0 L 150 0 L 300 100 L 300 200 L 150 200Z");
+        }
+        function hexagon(){
+            y.setAttribute("d","M 150 300 L 150 300 L 0 200 L 0 100 L 150 0 L 150 0 L 300 100 L 300 200 L 150 300Z");
+        }
+        function septagon(){
+            y.setAttribute("d","M 200 300 L 100 300 L 0 200 L 0 100 L 150 0 L 150 0 L 300 100 L 300 200 L 200 300Z");
+        }
+        function octagon(){
+            y.setAttribute("d","M 200 300 L 100 300 L 0 200 L 0 100 L 100 0 L 200 0 L 300 100 L 300 200 L 200 300Z");
+        }
+
+
+
+
+        function openFullscreen(){
+            var elem = document.body;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+            }
+        }
+
+        function closeFullscreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+            }
+        }
+
+        var Fscreen = false;
+        function full(){
+            if(Fscreen)
+                closeFullscreen();
+            else    
+                openFullscreen();
+            Fscreen = !Fscreen;
+        }
+
+        var mylatesttap;
+        function doubletap() {
+
+            var now = new Date().getTime();
+            var timesince = now - mylatesttap;
+            if((timesince < 300) && (timesince > 0)){
+
+                // double tap   
+                //console.log("doubletap");
+                full();
+
+            }
+            // else{
+            //             // too much time to be a doubletap
+            //             console.log("singletap");
+            //         }
+
+            mylatesttap = new Date().getTime();
+
+        }
+
+        document.body.addEventListener("click",doubletap)
+
+</script>
+</html>
